@@ -6,7 +6,7 @@ let r;
 
 
   r = new Rive({
-    src: "/assets/rive/ub_jahresbericht_2024.riv",
+    src: "./assets/rive/ub_jahresbericht_2024.riv",
     canvas: document.getElementById("canvas"),
     autoplay: true,
     artboard: "ArtboardMain",
