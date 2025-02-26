@@ -1,12 +1,13 @@
 // Import the entire module under the global identifier `rive`
 
 import { Rive, EventType } from "@rive-app/canvas";
+import ubjahresbericht24 from "./assets/rive/ub_jahresbericht_2024.riv";
 
 let r;
 
 
   r = new Rive({
-    src: "./assets/rive/ub_jahresbericht_2024.riv",
+    src: ubjahresbericht24,
     canvas: document.getElementById("canvas"),
     autoplay: true,
     artboard: "ArtboardMain",
