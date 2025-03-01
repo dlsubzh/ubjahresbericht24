@@ -18,21 +18,32 @@ r = new Rive({
   },
   });
 
+
+  window.addEventListener("resize", () => {
+    r.resizeDrawingSurfaceToCanvas();
+  });
+  
+
   console.log(r);
+
+
+
 
   // Define a mapping of event names to handler functions
   const eventHandlers = {
     "KI_Eisbrecher": (data) => {
-      // Handle eventName1
-      console.log("Handling eventName1:", data);
+      handlePopUp(data)
     },
-    "eventName2": (data) => {
-      // Handle eventName2
-      console.log("Handling eventName2:", data);
+
+
+    "KI_Literacy": (data) => {
+      handlePopUp(data)
     },
-    // Add additional events as needed
+
   };
   
+
+
   // Central event handler which dispatches events based on their name
   const riveEventHandler = (event) => {
     const eventName = event.data.name;
@@ -46,12 +57,64 @@ r = new Rive({
     }
   };
 
+
 r.on(EventType.RiveEvent, riveEventHandler);
 
 
-window.addEventListener("resize", () => {
-  r.resizeDrawingSurfaceToCanvas();
-});
+////////////////////////////////////////////////
+/////////////Fuinctions////////////////////////
+/////////////////////////////////////////////////
+
+// Handle Pop Up
+function handlePopUp(event) {
+
+  console.log(`Handling ${event.name}:`, event);
+
+  let eventID = document.getElementById(event.name);
+  console.log("Element:", eventID);
+
+  //attach close button handler
+  let closeButton = eventID.querySelector('.close-button');
+  closeButton.addEventListener("click", handleCloseButton);
+
+  
+  eventID.classList.remove("hidden")
+
+}
+
+
+// Generic close button handler function
+function handleCloseButton(event) {
+  const btn = event.currentTarget;
+
+  // Find the closest parent with the class "article" and hide it
+  const parentArticle = btn.closest('.article');
+  
+  if (parentArticle) {
+    parentArticle.classList.add('hidden');
+
+    // Concatenate the parent's id with "_Close!" to form the Rive input name
+    const articleID = parentArticle.id;
+    const articleCloseTrigger = `${articleID}_Close!`; // e.g., "KI_Eisbrecher_Close!"
+    console.log(`articleCloseTrigger: ${articleCloseTrigger}`);
+
+    //finding the Close Input
+    const inputs = r.stateMachineInputs('State Machine 1');
+    // Find the input you want to set a value for, or trigger
+    const closeInput = inputs.find(i => i.name === articleCloseTrigger);
+    console.log(closeInput);
+
+    // Trigger the Rive input if it exists
+    if (closeInput) {
+      closeInput.fire();
+      console.log(`Triggered Rive input: ${closeInput}`);
+    } else {
+      console.warn(`Rive input "${closeInput}" not found.`);
+    }
+  } else {
+    console.warn("No parent element with class 'article' found.");
+  }
+}
 
 
 function hideVid(id) {

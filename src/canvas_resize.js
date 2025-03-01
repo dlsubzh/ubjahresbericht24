@@ -16,6 +16,10 @@ canvas.width = Math.floor(scaledsizew);
 canvas.height = Math.floor(scaledsizeh);
 canvas.style.width = `${sizew}px`;
 canvas.style.height = `${sizeh}px`;
+
+const documentHeight = Math.round(sizeh + 300);
+document.documentElement.style.setProperty('--app-height', `${documentHeight}px`);
+console.log(`Canvas height set as --app-height: ${sizeh}px`);
 console.log(canvas.width)
 console.log(canvas.height)
 
@@ -27,5 +31,6 @@ console.log(ctx + " ctx")
 
 
 }
+
 calcCanvasSize()
 window.addEventListener('resize',calcCanvasSize)
