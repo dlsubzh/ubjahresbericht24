@@ -4,7 +4,7 @@ const ctx = canvas.getContext("2d");
 
 // Set display size (css pixels).
 const sizew = 1600 * 0.7;
-const sizeh = 3500 * 0.7;
+const sizeh = 3900 * 0.7;
 const scale = window.devicePixelRatio; // Change to 1 on retina screens to see blurry canvas.
 console.log(devicePixelRatio)
 const scaledsizew = Math.floor(sizew * scale);

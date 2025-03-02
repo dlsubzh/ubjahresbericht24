@@ -35,8 +35,15 @@ r = new Rive({
       handlePopUp(data)
     },
 
-
     "KI_Literacy": (data) => {
+      handlePopUp(data)
+    },
+
+    "KI_GenAI": (data) => {
+      handlePopUp(data)
+    },
+
+    "KI_Recherche": (data) => {
       handlePopUp(data)
     },
 
@@ -79,6 +86,12 @@ function handlePopUp(event) {
 
   
   eventID.classList.remove("hidden")
+
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: "smooth",
+  });
 
 }
 
