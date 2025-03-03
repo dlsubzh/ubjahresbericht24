@@ -47,6 +47,10 @@ r = new Rive({
       handlePopUp(data)
     },
 
+    "Ruedi": (data) => {
+      handlePopUp(data)
+    },
+
   };
   
 
@@ -101,7 +105,7 @@ function handleCloseButton(event) {
   const btn = event.currentTarget;
 
   // Find the closest parent with the class "article" and hide it
-  const parentArticle = btn.closest('.article');
+  const parentArticle = btn.closest('.pop-up-container');
   
   if (parentArticle) {
     parentArticle.classList.add('hidden');
