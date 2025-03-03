@@ -51,22 +51,27 @@ r = new Rive({
       handlePopUp(data)
     },
 
+    "ErstiTag": (data) => {
+      handlePopUp(data)
+    },
+
+
   };
   
 
 
-  // Central event handler which dispatches events based on their name
-  const riveEventHandler = (event) => {
-    const eventName = event.data.name;
-    console.log("Received event:", eventName);
-  
-    const handler = eventHandlers[eventName];
-    if (handler) {
-      handler(event.data);
-    } else {
-      console.warn(`No handler defined for event: ${eventName}`);
-    }
-  };
+// Central event handler which dispatches events based on their name
+const riveEventHandler = (event) => {
+  const eventName = event.data.name;
+  console.log("Received event:", eventName);
+
+  const handler = eventHandlers[eventName];
+  if (handler) {
+    handler(event.data);
+  } else {
+    console.warn(`No handler defined for event: ${eventName}`);
+  }
+};
 
 
 r.on(EventType.RiveEvent, riveEventHandler);
@@ -81,15 +86,17 @@ function handlePopUp(event) {
 
   console.log(`Handling ${event.name}:`, event);
 
-  let eventID = document.getElementById(event.name);
-  console.log("Element:", eventID);
+  let popUpElement = document.getElementById(event.name);
+  console.log("Element:", popUpElement);
 
   //attach close button handler
-  let closeButton = eventID.querySelector('.close-button');
+  let closeButton = popUpElement.querySelector('.close-button');
   closeButton.addEventListener("click", handleCloseButton);
 
+  //if video set Src
+  setVideo(popUpElement)
   
-  eventID.classList.remove("hidden")
+  popUpElement.classList.remove("hidden")
 
   window.scrollTo({
     top: 0,
@@ -105,13 +112,16 @@ function handleCloseButton(event) {
   const btn = event.currentTarget;
 
   // Find the closest parent with the class "article" and hide it
-  const parentArticle = btn.closest('.pop-up-container');
+  const popUpElement = btn.closest('.pop-up-container');
   
-  if (parentArticle) {
-    parentArticle.classList.add('hidden');
+  if (popUpElement) {
+
+    stopVideo(popUpElement);
+
+    popUpElement.classList.add('hidden');
 
     // Concatenate the parent's id with "_Close!" to form the Rive input name
-    const articleID = parentArticle.id;
+    const articleID = popUpElement.id;
     const articleCloseTrigger = `${articleID}_Close!`; // e.g., "KI_Eisbrecher_Close!"
     console.log(`articleCloseTrigger: ${articleCloseTrigger}`);
 
@@ -134,22 +144,21 @@ function handleCloseButton(event) {
 }
 
 
-function hideVid(id) {
-  let containerElement = document.getElementById(id);
-  containerElement.style.visibility = "hidden";
+function setVideo(popUpElement) {
+  const iframe = popUpElement.querySelector('iframe');
+  if (iframe) {
+    const videoSrc =  iframe.getAttribute('data-video-src');
+    iframe.setAttribute('src', videoSrc);
+  }
 }
-  
-function videoStopper(id) {
-  let containerElement = document.getElementById(id);
-  let iframe_tag = containerElement.querySelector( 'iframe');
-  let video_tag = containerElement.querySelector( 'video' );
-  if ( iframe_tag) {
-      let iframeSrc = iframe_tag.src;
-      iframe_tag.src = iframeSrc; 
-  }
-  if ( video_tag) {
-      video_tag.pause();
-  }
 
-  
+
+// Function to stop a video in a popup container by resetting its src attribute
+function stopVideo(popUpElement) {
+  const iframe = popUpElement.querySelector('iframe');
+  if (iframe) {
+
+    iframe.setAttribute('src', '');
+
+  }
 }
