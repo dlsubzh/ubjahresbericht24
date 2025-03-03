@@ -131,6 +131,13 @@ h2 {
   font-weight: 600;
 }
 
+h3 {
+  font-size: 21px;
+  line-height: 24px;
+  font-family: "Source Sans Pro";
+  font-weight: 600;
+}
+
 p {
   font-size: 16px;
   font-family: "Source Sans Pro";
@@ -200,6 +207,7 @@ justify-content: center;
 
 .article-content-wrapper {
   width: 77ch;
+  max-width: 95vw;
   display: grid;
   gap: 2rem;
   position: relative;
@@ -271,9 +279,69 @@ justify-content: center;
 }
 
 
+.article-table {
+  font-size: 16px;
+  font-family: "Source Sans Pro";
+  font-weight: 300;
+  padding: 3rem 1rem;
+}
 
+.article-table .caption {
+  font-size: 11px;
+  font-family: "Source Sans Pro";
+  font-weight: 300;
+  padding-top: 2rem;
+  text-align: right;
+}
 
+.article-table table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+}
 
+.article-table thead th {
+  font-size: 16px;
+  font-family: "Source Sans Pro";
+  font-weight: 600;
+  color: #285133;
+}
+
+.article-table thead th:nth-child(1) {
+  width: 15%;
+}
+
+.article-table thead th:nth-child(2) {
+  width: 15%;
+}
+
+.article-table thead th:nth-child(3) {
+  width: 10%;
+}
+
+.article-table thead th:nth-child(4) {
+  width: 20%;
+}
+
+.article-table thead th:nth-child(5) {
+  width: 20%;
+}
+
+.article-table thead th:nth-child(6) {
+  width: 20%;
+}
+
+.article-table td {
+  text-align: center;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #2851330d;
+}
+
+tbody tr:nth-child(even) {
+
+}
  
 
 /* Loader */
