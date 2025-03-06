@@ -164,6 +164,7 @@ body::-webkit-scrollbar {
 canvas {
   z-index: 1;
   border-radius: 33px;
+  cursor: default;
 }
 
 #canvas-container {

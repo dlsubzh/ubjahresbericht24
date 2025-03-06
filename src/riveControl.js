@@ -1,14 +1,37 @@
 // Import the entire module under the global identifier `rive`
 
-import { Rive, EventType } from "@rive-app/canvas";
+import { Rive, EventType,RiveEventType } from "@rive-app/canvas";
 import ubjahresbericht24 from "./assets/rive/ub_jahresbericht_2024.riv";
 
 let r;
 
+const canvasEl = document.getElementById("canvas");
+
+const onStateChange = (event) => {
+  const stateName = event.data[0];
+  console.log(stateName);
+  if (stateName.includes('Hover')) {
+    const isHovering = stateName.split('_').pop() === 'Hover';
+
+    if (isHovering) {
+      // Toggle the cursor style: if it's 'pointer', switch to 'default'; if not, switch to 'pointer'
+      if (canvasEl.style.cursor === 'pointer') {
+        canvasEl.style.cursor = 'default';
+      } else {
+        canvasEl.style.cursor = 'pointer';
+      }
+    } else {
+      // When not hovering, ensure the cursor is set to 'default'
+      canvasEl.style.cursor = 'default';
+    }
+    
+  }
+};
+
 
 r = new Rive({
   src: ubjahresbericht24,
-  canvas: document.getElementById("canvas"),
+  canvas: canvasEl,
   autoplay: true,
   artboard: "ArtboardMain",
   stateMachines: "State Machine 1",
@@ -16,7 +39,11 @@ r = new Rive({
   onLoad: () => {
     r.resizeDrawingSurfaceToCanvas();
   },
+
+  onStateChange: onStateChange,
+
   });
+  
 
 
   window.addEventListener("resize", () => {
@@ -63,16 +90,27 @@ r = new Rive({
 // Central event handler which dispatches events based on their name
 const riveEventHandler = (event) => {
   const eventName = event.data.name;
+  const eventData = event.data;
+  const eventProperties = eventData.properties;
   console.log("Received event:", eventName);
 
-  const handler = eventHandlers[eventName];
-  if (handler) {
-    handler(event.data);
-  } else {
-    console.warn(`No handler defined for event: ${eventName}`);
-  }
-};
+  if (eventData.type === RiveEventType.General) {
+    
+    const handler = eventHandlers[eventName];
+    if (handler) {
+      handler(eventData);
+    } else {
+      console.warn(`No handler defined for event: ${eventName}`);
+    }
+  
+  } else if (eventData.type === RiveEventType.OpenUrl) {
 
+  console.log("Open Link for:", eventName);
+  window.open(eventData.url);
+
+}
+
+};
 
 r.on(EventType.RiveEvent, riveEventHandler);
 
