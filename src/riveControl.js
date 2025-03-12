@@ -82,6 +82,11 @@ r = new Rive({
       handlePopUp(data)
     },
 
+    "SocialMedia": (data) => {
+      handlePopUp(data)
+    },
+
+
 
   };
   
