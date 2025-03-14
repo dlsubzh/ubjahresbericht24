@@ -97,6 +97,7 @@
 :root{
 --pink-light:  rgb(236, 178, 239);
 --pink:  rgb(229, 109, 235);
+--pink-dark:  rgb(197, 19, 206);
 --yellow-dark: #EECA69;
 --yellow-bg: #FFFBEC;
 --grenn-bg: #E4FFEA;
@@ -129,6 +130,15 @@ h2 {
   line-height: 27px;
   font-family: "Source Sans Pro";
   font-weight: 600;
+}
+h2 > p {
+  margin-top: 0.5rem;
+  font-size: 16px;
+  color: var(--pink-dark);
+  line-height: 21px;
+  font-family: "Source Sans Pro";
+  font-weight: 600;
+  font-style: italic;
 }
 
 h3 {
