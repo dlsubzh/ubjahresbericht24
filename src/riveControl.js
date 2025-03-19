@@ -86,6 +86,15 @@ r = new Rive({
       handlePopUp(data)
     },
 
+    "BIM": (data) => {
+      handlePopUp(data)
+    },
+
+    "IKTag": (data) => {
+      handlePopUp(data)
+    },
+
+
 
 
   };
