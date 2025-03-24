@@ -99,8 +99,9 @@ r = new Rive({
       handleQuoteChange(data)
     },
 
-    "QuotePointerEnter": (data) => {
-      handleQuotePointerEnter(data)
+    "Quote": (data) => {
+      handlePopUp(data);
+      handleQuoteClick(data);
     },
 
   };
@@ -225,28 +226,63 @@ function stopVideo(popUpElement) {
 
 //object with all quotes
 const Quotes = {
-  "Quote1": "Veränderungen sind richtig – wichtig sind die Menschen. Bereichernd war und ist die unkomplizierte Zusammenarbeit und Wertschätzung in unserem Team und insgesamt in der UB. Persönliches Highlight war, dass ich an der Entwicklung des Leitfadens schriftliche Kund*innen-Kommunikation mitwirken durfte.",
-
-  "Quote2": "Im Jahr 2024, meinem zweiten Jahr in der UB, hatte ich das Privileg, unseren Bereich im Open-Access-Netzwerk zu vertreten, eine neue Mini-Stage für unsere Lernenden zu entwickeln und meine Reise in den E-Media-Dschungel unter Anleitung einiger sehr kluger und erfahrener UB-Kollegen zu beginnen. Alles awesome Herausforderungen und eine tolle Zusammenarbeit.",
-
-  "Quote3": "Die Entwicklung einer gemeinsamen Strategie zusammen mit der ZB war für mich ein wegweisendes und spannendes Projekt. Persönlich konnte in zwei Produktfeldern bei der Ausarbeitung der strategischen Ziele mitwirken, damit wir nun konkret in die Strategieperiode 2025-2027 starten können.",
-
-  "Quote4": "Viele konkrete Probleme vor Ort zusammen mit kompetenten Arbeitskolleginnen und -kollegen aus Nutzendendienst, Mediendienst und der Liaison-Librarian-Gruppe lösen zu können, hat Freude gemacht. In diesen Userstories steckt sehr viel Potenzial!",
-
-  "Quote5": "Aufgrund der Rückmeldungen unserer Nutzenden ist die EG Discovery 2024 daran gegangen, erste Probleme in unserem swisscovery anzugehen. Der Prozess ist langsam und zäh. Es gibt diverse Abhängigkeiten. Vieles muss über die UB und ZB hinaus mit allen Schweizer Hochschulbibliotheken und SLSP abgesprochen werden. Deren Ziele und Interessen sind nicht immer dieselben wie unsere. Aber wir konnten 2024 erste Änderungen beschliessen, die nun ab 2025 auch für die Nutzenden sichtbar werden. Es ist wenig, aber es geht voran.",
-
-  "Quote6": "Im Bereich Naturwissenschaften ging es im 2024 turbulent zu und her. Es gab einige spürbare personelle Wechsel und Veränderungen in der Abteilungsstruktur. Mit r als neuen Liaison Librarian konnten wir eine grosse Bereicherung für unser Team gewinnen. Das Thema generative Künstliche Intelligenz wandelte sich, auch dank ihm, vom exotischen Modewort in einen fixen Bestandteil unserer Kurse. Und dann war da noch diese legendäre 4. Informationskompetenz-DACH-Tagung! Es hat unglaublich viel Freude gemacht zusammen mit einem dynamischen OK diese Konferenz auf die Beine zu stellen und internationale Gäste bei uns an der UZH willkommen zu heissen.",
-
-  "Quote7": "Die Zeitschriften-Publikationsplattform HOPE wurde 2024 verstetigt und ermöglicht mittlerweile über 20 UZH-Herausgebenden die Veröffentlichung von Diamond Open-Access-Zeitschriften. HOPE nutzt die weltweit verbreitete Open-Source-Software Open Journal Systems (OJS). Die Plattform steht im Einklang mit der 2024 revidierten Nationalen Open-Access-Strategie der Schweiz, die nun einen stärkeren Fokus auf die Förderung von Diamond Open Access legt.",
-
-  "Quote8": "Im September 2024 startete das Projekt zur Ablösung der Software EPrints durch DSpace des UZH-Repositoriums ZORA. Damit soll ZORA auf eine zukunftsfähige Softwarebasis gestellt werden und bleibt ein zentraler Bestandteil der Open-Science-Strategie der UZH, insbesondere im Bereich Green Open Access.",
-
-  "Quote9": "Als Teil des Social Media Teams war es schön zu sehen, wie 2024 die UB ihren Auftritt in den Sozialen Medien (besonders Instagram) ausbauen und ihre Followerschaft vergrössern konnte. Die Interaktion mit unseren Followern zeigt, dass wir mit informativen und lustigen Inhalten einen Kanal geschaffen haben, auf dem wir unsere Nutzenden erreichen können, und umgekehrt.",
-
-  "Quote10": "2024 ist die UB aus meiner Sicht nochmals zusammengerückt. Die Zusammenarbeit ist durch die dezentrale Struktur nach wie vor komplex, aber die Rollen und Wege werden immer klarer.",
-
-  "Quote11": "Im Jahr 2024 durfte ich während vier Monaten nebst meiner regulären Arbeit im Bereich 2 (Recht) zusätzlich einen Tag in der Woche im Bereich 3 (Sprachen & Wirtschaft) einspringen, da diese Engpässe bei den ND hatten. Die Leichtigkeit, mit welcher dieser kleine Ausflug geklappt hat – sowohl im Organisatorischen als auch bei der tatsächlichen Arbeit –, hat mir gezeigt, wie stark die verschiedenen Bereiche und Standorte der UB bereits zu einer Bibliothek zusammengewachsen sind."
+  "Quote1": {
+    title: "Wertschätzung und Zusammenarbeit",
+    text: "Veränderungen sind richtig – wichtig sind die Menschen. Bereichernd war und ist die unkomplizierte Zusammenarbeit und Wertschätzung in unserem Team und insgesamt in der UB. Persönliches Highlight war, dass ich an der Entwicklung des Leitfadens schriftliche Kund*innen-Kommunikation mitwirken durfte.",
+    author: "Karin Brändli, ND / DocDel, Bereich Medizin"
+  },
+  "Quote2": {
+    title: "Open Access und E-Media-Entdeckungen",
+    text: "Im Jahr 2024, meinem zweiten Jahr in der UB, hatte ich das Privileg, unseren Bereich im Open-Access-Netzwerk zu vertreten, eine neue Mini-Stage für unsere Lernenden zu entwickeln und meine Reise in den E-Media-Dschungel unter Anleitung einiger sehr kluger und erfahrener UB-Kollegen zu beginnen. Alles awesome Herausforderungen und eine tolle Zusammenarbeit.",
+    author: "Alisa Berger, Liaison Librarian Medizin"
+  },
+  "Quote3": {
+    title: "Strategische Zusammenarbeit mit der ZB",
+    text: "Die Entwicklung einer gemeinsamen Strategie zusammen mit der ZB war für mich ein wegweisendes und spannendes Projekt. Persönlich konnte in zwei Produktfeldern bei der Ausarbeitung der strategischen Ziele mitwirken, damit wir nun konkret in die Strategieperiode 2025-2027 starten können.",
+    author: "Susanna Blaser-Meier, Leitung Bereich Geisteswissenschaften"
+  },
+  "Quote4": {
+    title: "Potenzial in Userstories",
+    text: "Viele konkrete Probleme vor Ort zusammen mit kompetenten Arbeitskolleginnen und -kollegen aus Nutzendendienst, Mediendienst und der Liaison-Librarian-Gruppe lösen zu können, hat Freude gemacht. In diesen Userstories steckt sehr viel Potenzial!",
+    author: "Harald Völker, Liaison Librarian Romanistik"
+  },
+  "Quote5": {
+    title: "Swisscovery im Wandel",
+    text: "Aufgrund der Rückmeldungen unserer Nutzenden ist die EG Discovery 2024 daran gegangen, erste Probleme in unserem swisscovery anzugehen. Der Prozess ist langsam und zäh. Es gibt diverse Abhängigkeiten. Vieles muss über die UB und ZB hinaus mit allen Schweizer Hochschulbibliotheken und SLSP abgesprochen werden. Deren Ziele und Interessen sind nicht immer dieselben wie unsere. Aber wir konnten 2024 erste Änderungen beschliessen, die nun ab 2025 auch für die Nutzenden sichtbar werden. Es ist wenig, aber es geht voran.",
+    author: "Andreas Bigger, Functional Expert Discovery"
+  },
+  "Quote6": {
+    title: "KI & Teamdynamik in den Naturwissenschaften",
+    text: "Im Bereich Naturwissenschaften ging es im 2024 turbulent zu und her. Es gab einige spürbare personelle Wechsel und Veränderungen in der Abteilungsstruktur. Mit r als neuen Liaison Librarian konnten wir eine grosse Bereicherung für unser Team gewinnen. Das Thema generative Künstliche Intelligenz wandelte sich, auch dank ihm, vom exotischen Modewort in einen fixen Bestandteil unserer Kurse. Und dann war da noch diese legendäre 4. Informationskompetenz-DACH-Tagung! Es hat unglaublich viel Freude gemacht zusammen mit einem dynamischen OK diese Konferenz auf die Beine zu stellen und internationale Gäste bei uns an der UZH willkommen zu heissen.",
+    author: "Anna Véron, Liaison Librarian Naturwissenschaften"
+  },
+  "Quote7": {
+    title: "HOPE und Diamond Open Access",
+    text: "Die Zeitschriften-Publikationsplattform HOPE wurde 2024 verstetigt und ermöglicht mittlerweile über 20 UZH-Herausgebenden die Veröffentlichung von Diamond Open-Access-Zeitschriften. HOPE nutzt die weltweit verbreitete Open-Source-Software Open Journal Systems (OJS). Die Plattform steht im Einklang mit der 2024 revidierten Nationalen Open-Access-Strategie der Schweiz, die nun einen stärkeren Fokus auf die Förderung von Diamond Open Access legt.",
+    author: "Margit Dellatorre, Teamleitung Open-Access-Team"
+  },
+  "Quote8": {
+    title: "ZORA-Projekt und Zukunftsfähigkeit",
+    text: "Im September 2024 startete das Projekt zur Ablösung der Software EPrints durch DSpace des UZH-Repositoriums ZORA. Damit soll ZORA auf eine zukunftsfähige Softwarebasis gestellt werden und bleibt ein zentraler Bestandteil der Open-Science-Strategie der UZH, insbesondere im Bereich Green Open Access.",
+    author: "Tessa Gerber, Open-Access-Team / ZORA"
+  },
+  "Quote9": {
+    title: "Soziale Medien stärken",
+    text: "Als Teil des Social Media Teams war es schön zu sehen, wie 2024 die UB ihren Auftritt in den Sozialen Medien (besonders Instagram) ausbauen und ihre Followerschaft vergrössern konnte. Die Interaktion mit unseren Followern zeigt, dass wir mit informativen und lustigen Inhalten einen Kanal geschaffen haben, auf dem wir unsere Nutzenden erreichen können, und umgekehrt.",
+    author: "Alyah Davis-Moeck, Nutzenden- und Mediendienst, Bereich Sozialwissenschaften"
+  },
+  "Quote10": {
+    title: "Zusammenrücken trotz Dezentralität",
+    text: "2024 ist die UB aus meiner Sicht nochmals zusammengerückt. Die Zusammenarbeit ist durch die dezentrale Struktur nach wie vor komplex, aber die Rollen und Wege werden immer klarer.",
+    author: "Martina Kammermann, Leitung Kommunikation"
+  },
+  "Quote11": {
+    title: "Bereichsübergreifendes Einspringen",
+    text: "Im Jahr 2024 durfte ich während vier Monaten nebst meiner regulären Arbeit im Bereich 2 (Recht) zusätzlich einen Tag in der Woche im Bereich 3 (Sprachen & Wirtschaft) einspringen, da diese Engpässe bei den ND hatten. Die Leichtigkeit, mit welcher dieser kleine Ausflug geklappt hat – sowohl im Organisatorischen als auch bei der tatsächlichen Arbeit –, hat mir gezeigt, wie stark die verschiedenen Bereiche und Standorte der UB bereits zu einer Bibliothek zusammengewachsen sind.",
+    author: "Zoe Genhart, Nutzendendienst UB Recht"
+  }
 };
+
 
 // Keep track of the current quote index
 let currentQuoteIndex = 0;
@@ -259,31 +295,37 @@ const quoteKeys = Object.keys(Quotes);
 ////////////////////
 
 function handleQuoteChange(event) {
-  // Get current quote key
   const currentKey = quoteKeys[currentQuoteIndex];
+  const currentQuoteText = Quotes[currentKey].text;
 
-  // Get the current quote text
-  const currentQuoteText = Quotes[currentKey];
+  r.setTextRunValueAtPath("QuoteAgent_TextRun", currentQuoteText, "QuoteAgent");
 
-  // Set the text run value with the current quote
-  r.setTextRunValue("Quotes_TextRun", currentQuoteText);
-
-  // Increment the index and loop back if at the end
   currentQuoteIndex = (currentQuoteIndex + 1) % quoteKeys.length;
-};
+}
 
 
 
-function handleQuotePointerEnter(event) {
+function handleQuoteClick(event) {
+  const currentKey = quoteKeys[currentQuoteIndex];
+  const currentQuoteTitle = Quotes[currentKey].title;
+  const currentQuoteText = Quotes[currentKey].text;
+  const currentQuoteAuthor = Quotes[currentKey].author;
 
-  let name = event.name;
+  const quoteTitleEl = document.getElementById("quote-title");  
+  const quoteTextEl = document.querySelector("#quote-body p");
+  const quoteAuthorEl = document.querySelector("#quote-body h2 p");
 
-  console.log(`Handling ${name}:`);
-  
-  r.pause("QuotesTracking");
 
-  setTimeout(() => {
-    r.play("QuotesTracking");
-  }, 4000);
+  if (quoteTitleEl) {
+    quoteTitleEl.innerHTML = currentQuoteTitle;
+  }
+
+  if (quoteTextEl) {
+    quoteTextEl.innerHTML = currentQuoteText;
+  }
+
+  if (quoteAuthorEl) {
+    quoteAuthorEl.innerHTML = currentQuoteAuthor;
+  }
 
 }
