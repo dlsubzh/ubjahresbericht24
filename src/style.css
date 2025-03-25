@@ -170,6 +170,14 @@ body::-webkit-scrollbar {
 
 
 /* Canvas */
+#canvas-container {
+  position: absolute;
+  width: 100%;
+  display: grid;
+  padding-top: 2rem;
+  justify-items: center;
+  align-items: start;
+}
 
 canvas {
   z-index: 1;
@@ -177,14 +185,7 @@ canvas {
   cursor: default;
 }
 
-#canvas-container {
-position: absolute;
-width: 100%;
-display: grid;
-padding-top: 2rem;
-justify-items: center;
-align-items: start;
-}
+
 
 
 .flex_center{
@@ -329,9 +330,6 @@ justify-content: center;
   height: 0%;
 
 }
-
-
-
 
 .close-button {
   justify-self: end;
