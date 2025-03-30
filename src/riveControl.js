@@ -330,7 +330,7 @@ const quoteKeys = Object.keys(Quotes);
 
 function handleQuoteChange(event) {
   const currentKey = quoteKeys[currentQuoteIndex];
-  const currentQuoteText = Quotes[currentKey].text;
+  const currentQuoteText = Quotes[currentKey].title;
 
   r.setTextRunValueAtPath("QuoteAgent_TextRun", currentQuoteText, "QuoteAgent");
 
