@@ -10,14 +10,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body> 
+
+    <div id="mobile-warning" style="display: none;">
+      Der UB Zürich Jahresbericht 2024 ist eine komplexe Anwendung, die für Desktop-Nutzer optimiert ist. Wir würden uns über ihren Besuch per Computer sehr freuen!
+    </div>
+
     <!-- Für Loader -->
     <div class="lds-ellipsis" id="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
 
    <!-- Main -->
    <main>
+    <div id="JB-title" class="loading">
+      UB Zürich &mdash; Jahresbericht 2024
+    </div>
 
-
-    <div id="popup-container">
+    <div id="popup">
 
       <div id="KI_Eisbrecher" class="article hidden pop-up-container KI">
 
@@ -698,23 +705,37 @@
         <canvas id="canvas"></canvas>
     </div>
 
+    <div id="impressum">
+      <button id="impressum-button">Impressum</button>
+      <div id="impressum-list" class="hidden">
+        <p>Der Jahresbericht ist ein Team-Effort der Abteilung Innovation und Kommunikation. Vielen Dank an alle Personen die beigetragen haben das UB Jahr 2024 zu reflektieren!</p>
+        <br />
+        <p><strong>Koordination:</strong> Ladina Tschander</p>
+        <p><strong>Design:</strong> Joshua Binswanger</p>
+        <p><strong>Programming:</strong> Joshua Binswanger</p>
+        <p><strong>Videos:</strong> Martin Weiss</p>
+        <p><strong>Social Media Video:</strong> Emma-Louise Steiner</p>
+        <p><strong>Inhaltliche Koordination:</strong></p>
+          <ul>
+            <li>Kennzahlen: Sabine Klein</li>
+            <li>Social-Media: Martina Kammermann, Emma-Louise Steiner</li>
+            <li>BIM: Ladina Tschander</li>
+            <li>Quotes: Martina Kammermann</li>
+            <li>KI-Texte: Martina Kammermann, Emma-Louise Steiner</li>
+          </ul>
+
+      </div>
+
+    </div>
+
 
 
    </main>
 </body>
+
+
 <script type="module" src="./src/riveControl.js"></script>
 <script type="module" src="./src/loader.js"></script>
 <script type="module" src="./src/canvas_resize.js"></script> 
-<script>
-   function isMobileDevice() {
-       var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-       return /android|iPhone|iPad|iPod|opera mini|IEMobile|WPDesktop/i.test(userAgent);
-   }
-
-   if (isMobileDevice()) {
-       document.getElementById('mobile-warning').style.display = 'block';
-       cleanupRive();
-   }
-</script>
 
 </html>

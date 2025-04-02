@@ -40,6 +40,7 @@ r = new Rive({
     r.resizeDrawingSurfaceToCanvas();
     r.play("QuotesTracking");
     end_loader();
+    titleTransition();
   },
 
   onStateChange: onStateChange,
@@ -447,5 +448,42 @@ function backButtonFunction() {
     console.log("No pop-up currently open.");
   }
 }
+
+
+//////////////////////////////////////
+///////// Mobile Warning /////////////
+/////////////////////////////////////
+
+function isMobileDevice() {
+  var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  return /android|iPhone|iPad|iPod|opera mini|IEMobile|WPDesktop/i.test(userAgent);
+}
+
+if (isMobileDevice()) {
+  document.getElementById('mobile-warning').style.display = 'block';
+  document.getElementById('canvas-container').style.display = 'none';
+  r.cleanup();
+}
+
+
+///////////////////////////////////
+////////// Title ////////////////
+/////////////////////////////////
+
+function titleTransition() {
+  const title =  document.getElementById('JB-title');
+  title.classList.remove('loading');
+}
+
+
+///////////////////////////////////
+////////// Impressum ////////////////
+/////////////////////////////////
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('impressum-button').onclick = () =>
+    document.getElementById('impressum-list').classList.toggle('hidden');
+});
 
 
