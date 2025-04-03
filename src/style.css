@@ -613,11 +613,11 @@ lds-ellipsis {
   filter: drop-shadow(4px 6px 0px var(--green-dark));
   padding: 5vw;
   text-align: center;
-  border-radius: 15px;
+  border-radius: 22px;
   font-family: "Source Sans Pro";
   font-weight: 500;
   position: fixed;
-  top: 25vh;
+  top: 60vh;
   width: 80vw;
   margin: 5vw;
   z-index: 1000;
@@ -655,6 +655,7 @@ lds-ellipsis {
   #JB-title {
     font-size: 36px;
     top: 40px;
+    width: 80vw;
   }
 }
 
