@@ -7,7 +7,39 @@ let r;
 
 const canvasEl = document.getElementById("canvas");
 
+
+//Hover///
+
+
+
+const hoverStates = new Set([
+  "KI_Eisbrecher_Hover",
+  "KI_Literacy_Hover",
+  "KI_GenAI_Hover",
+  "KI_Recherche_Hover",
+  "Quote_Hover",
+  "BIM_Hover",
+  "Ruedi_Hover",
+  "SocialMedia_Hover",
+  "ErstiTag_Hover",
+  "IKTag_Hover"
+]);
+
 const onStateChange = (event) => {
+  const stateName = event.data[0];
+  console.log(stateName);
+
+  if (hoverStates.has(stateName)) {
+    canvasEl.style.cursor = "pointer";
+  } else if (stateName.endsWith("_Idle") || stateName.endsWith("_Out")) {
+    // You can define what "non-hover" states look like here
+    canvasEl.style.cursor = "default";
+  }
+};
+
+
+///// OLD
+/* const onStateChange = (event) => {
   const stateName = event.data[0];
   console.log(stateName);
   if (stateName.includes('Hover')) {
@@ -27,7 +59,7 @@ const onStateChange = (event) => {
     
   }
 };
-
+ */
 
 r = new Rive({
   src: ubjahresbericht24,
