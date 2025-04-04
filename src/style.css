@@ -627,11 +627,11 @@ lds-ellipsis {
 
 #JB-title {
   position: absolute;  /* ensures it's relative to the viewport */
-  top: 10%;
+  top: 90px;
   left: 50%;
   transform: translate(-50%, -50%)  translateZ(0); 
 
-  width: fit-content;
+  width: 850px;
   padding: 5px 30px;
   text-align: center;
   color: var(--green-dark);
@@ -642,27 +642,29 @@ lds-ellipsis {
   border-color: var(--green-dark);
   filter: drop-shadow(4px 6px 0px var(--green-dark));
   font-weight: 600;
-  font-size: 60px;
+  font-size: 55px;
   z-index: 1010;
   text-align: center;
 
   pointer-events: none;
 
-  transition: font-size 3s ease 0.5s, top 3s ease 0.5s, transform 3s ease 0.5s, opacity 1s ease 0s;
+  transition: transform 3s ease 0.5s, opacity 1s ease 0s;
 }
 
-@media (max-width: 768px) {
+
+
+@media (max-width: 1200px) {
   #JB-title {
     font-size: 36px;
-    top: 40px;
-    width: 80vw;
+    top: 80px;
+    width: 700px;
   }
 }
 
 @media (max-width: 480px) {
   #JB-title {
     font-size: 28px;
-    top: 30px;
+    top: 80px;
   }
 }
 
